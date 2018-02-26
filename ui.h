@@ -618,6 +618,9 @@ _UI_EXTERN void uiColorButtonSetColor(uiColorButton *b, double r, double g, doub
 _UI_EXTERN void uiColorButtonOnChanged(uiColorButton *b, void (*f)(uiColorButton *, void *), void *data);
 _UI_EXTERN uiColorButton *uiNewColorButton(void);
 
+// TODO merge
+#include "uitable.h"
+
 #ifdef __cplusplus
 }
 #endif
