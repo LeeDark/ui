@@ -22,12 +22,12 @@ var windows = make(map[*C.uiWindow]*Window)
 // entirety of the window. Though a Window is a Control,
 // a Window cannot be the child of another Control.
 type Window struct {
-	c	*C.uiControl
-	w	*C.uiWindow
+	c *C.uiControl
+	w *C.uiWindow
 
-	child		Control
+	child Control
 
-	onClosing		func(w *Window) bool
+	onClosing func(w *Window) bool
 }
 
 // NewWindow creates a new Window.
@@ -44,6 +44,10 @@ func NewWindow(title string, width int, height int, hasMenubar bool) *Window {
 	windows[w.w] = w
 
 	return w
+}
+
+func (w *Window) Center() {
+	C.uiWindowCenter(w.w)
 }
 
 // Destroy destroys the Window. If the Window has a child,
