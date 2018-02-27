@@ -14,8 +14,14 @@ func MsgBoxError(w *Window, title string, description string) {
 	C.uiMsgBoxError(w.w, ctitle, cdescription)
 }
 
-func OpenFile(w *Window) string {
-	cname := C.uiOpenFile(w.w)
+func OpenFile(w *Window, filename string) string {
+	var cfilename *C.char
+	if filename == "" {
+		cfilename = nil
+	} else {
+		cfilename = C.CString(filename)
+	}
+	cname := C.uiOpenFile(w.w, cfilename)
 	if cname == nil {
 		return ""
 	}
@@ -23,8 +29,14 @@ func OpenFile(w *Window) string {
 	return C.GoString(cname)
 }
 
-func SaveFile(w *Window) string {
-	cname := C.uiSaveFile(w.w)
+func SaveFile(w *Window, filename string) string {
+	var cfilename *C.char
+	if filename == "" {
+		cfilename = nil
+	} else {
+		cfilename = C.CString(filename)
+	}
+	cname := C.uiSaveFile(w.w, cfilename)
 	if cname == nil {
 		return ""
 	}
