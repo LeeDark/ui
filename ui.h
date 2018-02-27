@@ -97,6 +97,9 @@ typedef struct uiWindow uiWindow;
 #define uiWindow(this) ((uiWindow *) (this))
 _UI_EXTERN char *uiWindowTitle(uiWindow *w);
 _UI_EXTERN void uiWindowSetTitle(uiWindow *w, const char *title);
+_UI_EXTERN void uiWindowPosition(uiWindow *w, int *x, int *y);
+_UI_EXTERN void uiWindowSetPosition(uiWindow *w, int x, int y);
+_UI_EXTERN void uiWindowCenter(uiWindow *w);
 _UI_EXTERN void uiWindowOnClosing(uiWindow *w, int (*f)(uiWindow *w, void *data), void *data);
 _UI_EXTERN void uiWindowSetChild(uiWindow *w, uiControl *child);
 _UI_EXTERN int uiWindowMargined(uiWindow *w);
@@ -249,8 +252,8 @@ _UI_EXTERN uiMenuItem *uiMenuAppendAboutItem(uiMenu *m);
 _UI_EXTERN void uiMenuAppendSeparator(uiMenu *m);
 _UI_EXTERN uiMenu *uiNewMenu(const char *name);
 
-_UI_EXTERN char *uiOpenFile(uiWindow *parent);
-_UI_EXTERN char *uiSaveFile(uiWindow *parent);
+_UI_EXTERN char *uiOpenFile(uiWindow *parent, const char* filename);
+_UI_EXTERN char *uiSaveFile(uiWindow *parent, const char* filename);
 _UI_EXTERN void uiMsgBox(uiWindow *parent, const char *title, const char *description);
 _UI_EXTERN void uiMsgBoxError(uiWindow *parent, const char *title, const char *description);
 
@@ -614,6 +617,9 @@ _UI_EXTERN void uiColorButtonColor(uiColorButton *b, double *r, double *g, doubl
 _UI_EXTERN void uiColorButtonSetColor(uiColorButton *b, double r, double g, double bl, double a);
 _UI_EXTERN void uiColorButtonOnChanged(uiColorButton *b, void (*f)(uiColorButton *, void *), void *data);
 _UI_EXTERN uiColorButton *uiNewColorButton(void);
+
+// TODO merge
+#include "uitable.h"
 
 #ifdef __cplusplus
 }
