@@ -149,11 +149,11 @@ _UI_EXTERN uiLabel *uiNewLabel(const char *text);
 typedef struct uiTab uiTab;
 #define uiTab(this) ((uiTab *) (this))
 _UI_EXTERN void uiTabAppend(uiTab *t, const char *name, uiControl *c);
-_UI_EXTERN void uiTabInsertAt(uiTab *t, const char *name, uintmax_t before, uiControl *c);
-_UI_EXTERN void uiTabDelete(uiTab *t, uintmax_t index);
-_UI_EXTERN uintmax_t uiTabNumPages(uiTab *t);
-_UI_EXTERN int uiTabMargined(uiTab *t, uintmax_t page);
-_UI_EXTERN void uiTabSetMargined(uiTab *t, uintmax_t page, int margined);
+_UI_EXTERN void uiTabInsertAt(uiTab *t, const char *name, int before, uiControl *c);
+_UI_EXTERN void uiTabDelete(uiTab *t, int index);
+_UI_EXTERN int uiTabNumPages(uiTab *t);
+_UI_EXTERN int uiTabMargined(uiTab *t, int page);
+_UI_EXTERN void uiTabSetMargined(uiTab *t, int page, int margined);
 _UI_EXTERN uiTab *uiNewTab(void);
 
 typedef struct uiGroup uiGroup;
@@ -193,6 +193,7 @@ _UI_EXTERN uiProgressBar *uiNewProgressBar(void);
 typedef struct uiSeparator uiSeparator;
 #define uiSeparator(this) ((uiSeparator *) (this))
 _UI_EXTERN uiSeparator *uiNewHorizontalSeparator(void);
+_UI_EXTERN uiSeparator *uiNewVerticalSeparator(void);
 
 typedef struct uiCombobox uiCombobox;
 #define uiCombobox(this) ((uiCombobox *) (this))
